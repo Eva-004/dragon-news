@@ -1,20 +1,32 @@
+'use client'
+import { authClient } from '@/lib/auth-client';
 import React from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const RightSideBar = () => {
+    const handleGoogleSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
+    const handleGitHubSignIn = async () => {
+        const data = await authClient.signIn.social({
+        provider: "github"
+    });
+    }
     return (
         <div className='col-span-3'>
-           <h2 className='font-semibold text-xl mb-3'>Login With</h2>
-           <div className='space-y-2 '>
-            <button className='btn  border-blue-400 text-blue-400 flex justify-between items-center gap-2'>
-                <FaGoogle />
-                <p>Login with Google</p>
-            </button>
-            <button className='btn border-red-400 text-red-400 flex justify-between items-center gap-2'>
-                <FaGithub />
-                  <p>Login with Google</p>
-            </button>
-           </div>
+            <h2 className='font-semibold text-xl mb-3'>Login With</h2>
+            <div className='space-y-2 '>
+                <button className='btn  border-blue-400 text-blue-400 flex justify-between items-center gap-2' onClick={handleGoogleSignIn}>
+                    <FaGoogle />
+                    <p>Login with Google</p>
+                </button>
+                <button className='btn border-red-400 text-red-400 flex justify-between items-center gap-2' onClick={handleGitHubSignIn}>
+                    <FaGithub />
+                    <p>Login with Google</p>
+                </button>
+            </div>
         </div>
     );
 };
