@@ -3,7 +3,9 @@ import { getCategories, getNewsByCategory } from '@/lib/data';
 import LeftSideBar from '@/components/homePage/LeftSideBar';
 import RightSideBar from '@/components/homePage/RightSideBar';
 import React from 'react';
-
+export const metadata = {
+  title: 'Dragon News',
+}
 const NewsCategoryPage = async({params}) => {
     const {id}= await params;
     const categories = await getCategories();

@@ -5,6 +5,14 @@ import React from 'react';
 import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import { FaArrowLeft } from 'react-icons/fa';
 
+export async function generateMetadata({ params}){
+    const {id} = await params
+    const news = await getNewsDetails(id);
+    return{
+     title: news[0].title
+    }
+}
+
 const NewsDetailsPage = async ({ params }) => {
     const { id } = await params;
     const news = await getNewsDetails(id);
